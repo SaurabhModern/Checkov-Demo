@@ -22,7 +22,7 @@ jobs:
 
       - run: pip install checkov
 
-      - run: checkov -d .  --framework dockerfile -o json --output-file-path . 
+      - run: checkov -d .  --framework dockerfile -s -o json --output-file-path . 
       
       - run: git clone https://github.com/Suraj-1999-13/Demo.git
       
