@@ -22,18 +22,11 @@ jobs:
 
       - run: pip install checkov
 
-      - name: Checkov GitHub Action
-        uses: bridgecrewio/checkov-action@v12.1347.0
-        with:
-          framework: dockerfile
-          output_format: json
-          soft_fail: true
-          
-      - run: echo "$CHECKOV_RESULTS" > result.json
+      - run: checkov -d .  --framework dockerfile -o json --output-file-path . 
       
       - run: git clone https://github.com/Suraj-1999-13/Demo.git
       
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: result.json
+          path: results_json.json
